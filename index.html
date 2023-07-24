@@ -24,7 +24,7 @@
 
             <div class="input-block">
               <label for="login-email">Email Address</label>
-              <input id="login-email" placeholder="UID@cuchd.in" type="email"  required>
+              <input id="login-email" placeholder="UID@cuchd.in" type="email" required>
             </div>
             <div class="input-block">
               <label for="login-password">Password</label>
@@ -34,9 +34,7 @@
             <h2 class="qrText">Login With QR Code 🤳🏻</h2>
             <form>
               <input type="file" accept="image/*" onchange="readQRCode(this.files)">
-              <div class="qrText" id="result">
-                <h1></h1>
-              </div>
+              <div class="qrText" id="result"><h1></h1></div>
 
           </fieldset>
           <button type="submit" class="btn-login">Login</button>
@@ -57,20 +55,23 @@
 
             <div class="input-block">
               <label for="signup-email">Email Address</label>
-              <input id="signup-email" placeholder="UID@cuchd.in" type="email" required Id="qrcodeid" >
+              <input id="signup-email" placeholder="UID@cuchd.in" type="email" required Id="qrcodeid"
+                onchange="generateQRCode(this.value)">
             </div>
             <div class="input-block">
               <label for="signup-password">Password</label>
-              <input id="signup-password" placeholder="Password" type="password" required Id="qrcodepass" onchange="generateQRCode(this.z)">
+              <input id="signup-password" placeholder="Password" type="password" required Id="qrcodepass"
+                onchange="generateQRCode(this.p)">
             </div>
             <div class="input-block">
               <label for="signup-password-confirm">Confirm password</label>
-              <input id="signup-password-confirm" placeholder="Same Password" type="password" required >
+              <input id="signup-password-confirm" placeholder="Same Password" type="password" required
+                onclick="generateQRCode()">
             </div>
 
-          <img class="result" id="qrcode" />
-          <a href="#" id="download-link" download="qrcode.png">⬇️</a>
-        </fieldset>
+            <img class="result" id="qrcode" />
+            <a href="#" id="download-link" download="qrcode.png">⬇️</a>
+          </fieldset>
 
           <button type="submit" class="btn-signup">Continue</button>
         </form>

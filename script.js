@@ -9,39 +9,36 @@ switchers.forEach(item => {
 
 function readQRCode(files) {
 	const resultContainer = document.querySelector('#result');
-
+  
 	if (files && files[0]) {
-		const apiUrl = 'http://api.qrserver.com/v1/read-qr-code/';
-		const formData = new FormData();
-		formData.append('file', files[0]);
-
-		// Send the image file to the QR code reader API using a POST request
-		fetch(apiUrl, { method: 'POST', body: formData })
-			.then((response) => response.json())
-			.then((data) => {
-				if (data[0].symbol[0].error) {
-					console.error(data[0].symbol[0].error);
-				} else {
-					// Display the QR code content in the result container
-					resultContainer.innerText = data[0].symbol[0].data;
-				}
-			})
-			.catch((error) => console.error(error));
+	  const apiUrl = 'http://api.qrserver.com/v1/read-qr-code/';
+	  const formData = new FormData();
+	  formData.append('file', files[0]);
+  
+	  // Send the image file to the QR code reader API using a POST request
+	  fetch(apiUrl, { method: 'POST', body: formData })
+		.then((response) => response.json())
+		.then((data) => {
+		  if (data[0].symbol[0].error) {
+			console.error(data[0].symbol[0].error);
+		  } else {
+			// Display the QR code content in the result container
+			resultContainer.innerText = data[0].symbol[0].data;
+		  }
+		})
+		.catch((error) => console.error(error));
 	}
-}
+  }
 
 
-let x = document.getElementById("qrcodeid");
-let y = document.getElementById("qrcodepass");
-let z = "emailid" + x + "password" + y;
-
-
-
-
-function generateQRCode(z) {
+function generateQRCode(value, p) {
+	let qr = value + "/n" + p;
+	alert("This is an alert message box." + qr);
+	//alert("This is an alert message box." + value);
+	//alert("This is an alert message box." + p);
 	let formData = new FormData();
-	formData.append('data',z);
-	fetch('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + z, {
+	formData.append('data', qr);
+	fetch('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + qr, {
 		method: 'POST',
 		body: formData
 	}).then((res) => {
